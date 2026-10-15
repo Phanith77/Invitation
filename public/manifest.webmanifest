@@ -1,0 +1,17 @@
+{
+  "name": "សិរីសួស្តីអាពាហ៍ពិពាហ៍ · សុផានឹត & មិនទាន់មាន",
+  "short_name": "សុផានឹត & មិនទាន់មាន",
+  "description": "Wedding invitation · Phat Sophanith & To be announced",
+  "lang": "km",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0f1913",
+  "theme_color": "#0f1913",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

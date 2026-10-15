@@ -1,0 +1,111 @@
+/* ── opening scene: a rumdul flower in an evening garden ── */
+.env-screen {
+  position: fixed; inset: 0; z-index: 100;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: clamp(6px, 2.4svh, 26px);
+  padding: max(16px, env(safe-area-inset-top)) 16px max(16px, env(safe-area-inset-bottom));
+  overflow: hidden;
+  background: #0f1913;
+  touch-action: none; /* iOS ignores overflow:hidden on <html>; stop swipes reaching the page */
+  overscroll-behavior: contain;
+}
+.env-title { position: relative; z-index: 2; text-align: center; display: grid; gap: .1em; }
+.env-title .km-moul { font-size: clamp(18px, 5.6vw, 30px); }
+.env-title .en-caps { font-size: clamp(10px, 2.9vw, 13px); color: color-mix(in srgb, var(--cream) 80%, transparent); padding-left: .32em; }
+.env-hint { position: relative; z-index: 2; font-size: clamp(13px, 3.6vw, 15px); color: color-mix(in srgb, var(--cream) 85%, transparent); }
+.env-hint[lang='en'] { letter-spacing: .2em; text-transform: uppercase; font-size: 12px; }
+
+/* evening sky, moon, garden */
+.rd-sky { position: absolute; inset: 0; background: linear-gradient(to bottom, #101833 0%, #2a2a55 32%, #5a4569 58%, #b77a6a 82%, #e2a877 100%); }
+.rd-moon { position: absolute; right: 16%; top: 11%; width: 9vmin; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 40% 40%, #fffbea, #f3e6bf 60%, #e6d39a); box-shadow: 0 0 40px 10px rgb(255 240 200 / .25); }
+.rd-stars { position: absolute; inset: 0 0 50% 0; opacity: .6; background-image: radial-gradient(1px 1px at 12% 18%, #fff, transparent), radial-gradient(1px 1px at 30% 8%, #fff, transparent), radial-gradient(1.5px 1.5px at 48% 22%, #fff, transparent), radial-gradient(1px 1px at 62% 5%, #fff, transparent), radial-gradient(1px 1px at 8% 38%, #fff, transparent), radial-gradient(1.5px 1.5px at 92% 30%, #fff, transparent), radial-gradient(1px 1px at 56% 40%, #fff, transparent); }
+.rd-garden { position: absolute; inset: 58% 0 0 0; background: radial-gradient(ellipse 120% 70% at 50% 100%, #142a1c 40%, transparent 72%), linear-gradient(to bottom, transparent, #0f1913 70%); }
+.rd-branch { position: absolute; top: -2%; width: min(46vw, 360px); pointer-events: none; }
+.rd-branch.l { left: -4%; } .rd-branch.r { right: -4%; }
+.rd-flies { position: absolute; inset: 0; pointer-events: none; }
+.rd-flies i { position: absolute; width: 4px; height: 4px; border-radius: 50%; background: #ffeaa0; box-shadow: 0 0 10px 3px rgb(255 226 140 / .6); animation: fly calc(5s + var(--i) * .7s) ease-in-out infinite alternate, blinkfly calc(2.2s + var(--i) * .3s) ease-in-out infinite alternate; }
+@keyframes fly { to { transform: translate(calc(20px - var(--i) * 4px), calc(-30px + var(--i) * 5px)); } }
+@keyframes blinkfly { from { opacity: .15; } to { opacity: 1; } }
+
+/* stage: perspective here; inside, everything keeps preserve-3d (no filter, no opacity) */
+.rd-stage {
+  --fw: min(80vw, 470px, calc((100svh - 230px) / 1.04));
+  position: relative; z-index: 1; width: var(--fw); aspect-ratio: 1 / .82;
+  margin-top: calc(var(--fw) * .2); /* room for the bud and the names above it */
+  perspective: 1000px; perspective-origin: 50% 20%;
+  cursor: pointer; outline: none; -webkit-user-select: none; user-select: none;
+}
+.rd-stage:focus-visible { outline: 1px dashed var(--foil-2); outline-offset: 10px; }
+.rd-cam, .rd-tilt, .rd-bob, .rd-plane, .rd-flower { position: absolute; inset: 0; transform-style: preserve-3d; }
+/* .rd-plane tilt is set and animated by GSAP (60° closed → 20° in bloom) */
+
+.rd-glow { position: absolute; left: 50%; top: 50%; width: calc(var(--fw) * .9); aspect-ratio: 1; margin: calc(var(--fw) * -.45) 0 0 calc(var(--fw) * -.45); border-radius: 50%; background: radial-gradient(closest-side, rgb(255 240 190 / .95), rgb(255 214 140 / .45) 45%, rgb(255 200 130 / 0)); transform: translateZ(4px) scale(.6); opacity: 0; }
+
+/* petals and leaves lie flat pointing outward; GSAP lifts them with rotationX around the base */
+.rd-wrap { position: absolute; left: 50%; top: 50%; width: 0; height: 0; transform: rotateZ(var(--rz)); transform-style: preserve-3d; }
+.rd-part { position: absolute; transform-origin: 50% 100%; backface-visibility: visible; }
+.rd-part svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.rd-wrap.leaf { transform: rotateZ(var(--rz)) translateZ(-4px); }
+.leaf .rd-part { width: calc(var(--fw) * .17); height: calc(var(--fw) * .62); left: calc(var(--fw) * -.085); bottom: calc(var(--fw) * .02); }
+.leaf-s .rd-part { width: calc(var(--fw) * .15); height: calc(var(--fw) * .5); left: calc(var(--fw) * -.075); }
+.rd-wrap.leaf-s { transform: rotateZ(var(--rz)) translateZ(-2px); }
+.outer .rd-part { width: calc(var(--fw) * .44); height: calc(var(--fw) * .43); left: calc(var(--fw) * -.22); bottom: calc(var(--fw) * .015); }
+.inner .rd-part { width: calc(var(--fw) * .27); height: calc(var(--fw) * .23); left: calc(var(--fw) * -.135); bottom: 0; }
+
+/* the small heart of the flower where the three inner lobes meet */
+.rd-core { position: absolute; left: 50%; top: 50%; width: calc(var(--fw) * .07); aspect-ratio: 1; margin: calc(var(--fw) * -.035) 0 0 calc(var(--fw) * -.035); border-radius: 50%; background: radial-gradient(circle at 40% 35%, #f6d36a, #b07a14 70%); transform: translateZ(calc(var(--fw) * .055)); }
+
+/* fragrance motes and the names float upright (counter-tilted to face the camera) */
+.rd-motes { position: absolute; left: 50%; top: 50%; transform: translateZ(calc(var(--fw) * .12)); transform-style: preserve-3d; }
+.rd-mote { position: absolute; width: 6px; height: 6px; margin: -3px; border-radius: 50%; background: #fff3c0; box-shadow: 0 0 10px 3px rgb(255 226 140 / .7); opacity: 0; }
+.rd-heart { position: absolute; left: 50%; top: calc(50% - var(--fw) * .7); width: calc(var(--fw) * .74); transform: translate(-50%, -50%) translateZ(calc(var(--fw) * .1)); transform-style: preserve-3d; pointer-events: none; }
+
+.rd-to { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; margin-top: -4px; font-size: 13px; color: color-mix(in srgb, var(--cream) 80%, transparent); }
+.rd-to .env-to-name { font-family: var(--km-moul); font-size: clamp(17px, 5vw, 24px); line-height: 1.8; margin-top: -.4em; }
+.rd-dusk { position: absolute; inset: 0; z-index: 5; pointer-events: none; opacity: 0; background: radial-gradient(ellipse at 50% 55%, #fffaea, #fbecc2 45%, #f0cf93 80%, #d9a46e); }
+
+@media (max-height: 520px) {
+  .env-screen { gap: 2px; padding-block: 8px; }
+  .rd-stage { --fw: min(60vw, calc((100svh - 90px) / 1.04)); }
+  .env-title { grid-auto-flow: column; gap: 14px; align-items: baseline; }
+  .env-title .km-moul { font-size: 18px; }
+}
+@media (prefers-reduced-motion: reduce) { .rd-flies i { animation: none; opacity: .6; } }
+
+/* living scenery: CSS only (cheap on phones); uses rotate/translate so GSAP's x/y never clash */
+.rd-branch.l { transform-origin: 0 0; animation: branchL 7s ease-in-out infinite; }
+.rd-branch.r { transform-origin: 100% 0; animation: branchR 8s ease-in-out infinite; }
+@keyframes branchL { 0%, 100% { rotate: -1.2deg; } 50% { rotate: 1.8deg; } }
+@keyframes branchR { 0%, 100% { rotate: 1.2deg; } 50% { rotate: -1.6deg; } }
+.rd-leaf { transform-box: fill-box; transform-origin: 0 60%; animation: leafFlutter 3.4s ease-in-out infinite alternate; animation-delay: var(--d, 0s); }
+@keyframes leafFlutter { from { rotate: -8deg; } to { rotate: 7deg; } }
+.rd-bud { transform-box: fill-box; transform-origin: 50% 0; animation: budSwing 2.8s ease-in-out infinite alternate; }
+@keyframes budSwing { from { rotate: -12deg; } to { rotate: 12deg; } }
+
+/* the moon breathes a soft halo and floats a little */
+.rd-moon { animation: moonFloat 9s ease-in-out infinite alternate; }
+.rd-moon::after { content: ''; position: absolute; inset: -70%; border-radius: 50%; background: radial-gradient(closest-side, rgb(255 244 210 / .4), rgb(255 244 210 / .12) 55%, transparent); animation: halo 5s ease-in-out infinite alternate; }
+@keyframes moonFloat { from { translate: 0 0; } to { translate: 0 -8px; } }
+@keyframes halo { from { scale: .85; opacity: .55; } to { scale: 1.18; opacity: 1; } }
+
+/* thin clouds drift slowly across, passing in front of the moon */
+.rd-cloud { position: absolute; left: 0; height: 6vmin; border-radius: 50%; background: radial-gradient(closest-side, rgb(214 200 238 / .32), rgb(214 200 238 / 0)); filter: blur(5px); animation: cloudDrift linear infinite; }
+.rd-cloud.c1 { top: 10%; width: 40vmin; animation-duration: 75s; animation-delay: -30s; }
+.rd-cloud.c2 { top: 16%; width: 28vmin; height: 4.5vmin; animation-duration: 95s; animation-delay: -70s; opacity: .8; }
+@keyframes cloudDrift { from { translate: -45vmin 0; } to { translate: 110vw 0; } }
+
+/* a shooting star every so often */
+.rd-shoot { position: absolute; top: 12%; left: 14%; width: 130px; height: 2px; border-radius: 2px; background: linear-gradient(90deg, rgb(255 255 255 / 0), #fff); rotate: 20deg; opacity: 0; animation: shoot 12s ease-in infinite 4s; }
+@keyframes shoot { 0% { translate: 0 0; opacity: 0; } 1.5% { opacity: 1; } 6% { translate: 32vw 12vw; opacity: 0; } 100% { translate: 32vw 12vw; opacity: 0; } }
+
+/* rumdul petals drifting down, fluttering as they fall */
+.rd-petals { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.rd-petals i { position: absolute; top: -6%; width: var(--s); aspect-ratio: 1 / 1.25; animation: petalFall var(--t) linear infinite; animation-delay: var(--dl); }
+.rd-petals b { display: block; width: 100%; height: 100%; border-radius: 50% 50% 50% 50% / 62% 62% 38% 38%; background: radial-gradient(circle at 40% 30%, #fff5cc, #f2c94c 72%); box-shadow: 0 0 8px rgb(255 220 140 / .45); animation: petalFlutter calc(var(--t) / 5) ease-in-out infinite alternate; }
+@keyframes petalFall { from { translate: 0 0; } to { translate: var(--dx) 112vh; } }
+@keyframes petalFlutter { from { rotate: -40deg; scale: 1 .75; } to { rotate: 45deg; scale: .7 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .rd-branch, .rd-leaf, .rd-bud, .rd-moon, .rd-moon::after, .rd-cloud, .rd-shoot, .rd-petals i, .rd-petals b { animation: none; }
+  .rd-petals { display: none; }
+}

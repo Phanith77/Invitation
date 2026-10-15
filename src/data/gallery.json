@@ -1,0 +1,233 @@
+[
+  {
+    "slug": "art-01-cover",
+    "w": 2000,
+    "h": 1333,
+    "cover": true,
+    "gallery": true
+  },
+  {
+    "slug": "art-02-couple",
+    "w": 1333,
+    "h": 2000,
+    "cover": false,
+    "gallery": true
+  },
+  {
+    "slug": "art-03-groom",
+    "w": 1600,
+    "h": 1600,
+    "cover": false,
+    "gallery": true
+  },
+  {
+    "slug": "art-04-bride",
+    "w": 1600,
+    "h": 1600,
+    "cover": false,
+    "gallery": true
+  },
+  {
+    "slug": "art-05-lanterns",
+    "w": 2000,
+    "h": 1333,
+    "cover": false,
+    "gallery": true
+  },
+  {
+    "slug": "art-06-sunrise",
+    "w": 2000,
+    "h": 1333,
+    "cover": false,
+    "gallery": true
+  },
+  {
+    "slug": "art-07-trays",
+    "w": 1600,
+    "h": 1600,
+    "cover": false,
+    "gallery": true
+  },
+  {
+    "slug": "art-08-garden",
+    "w": 1333,
+    "h": 2000,
+    "cover": false,
+    "gallery": true
+  },
+  {
+    "slug": "party-bridesmaid",
+    "w": 800,
+    "h": 800,
+    "cover": false,
+    "gallery": false
+  },
+  {
+    "slug": "party-child-girl",
+    "w": 800,
+    "h": 800,
+    "cover": false,
+    "gallery": false
+  },
+  {
+    "slug": "party-child",
+    "w": 800,
+    "h": 800,
+    "cover": false,
+    "gallery": false
+  },
+  {
+    "slug": "party-escort",
+    "w": 800,
+    "h": 800,
+    "cover": false,
+    "gallery": false
+  },
+  {
+    "slug": "party-father",
+    "w": 800,
+    "h": 800,
+    "cover": false,
+    "gallery": false
+  },
+  {
+    "slug": "party-flower-boy",
+    "w": 800,
+    "h": 800,
+    "cover": false,
+    "gallery": false
+  },
+  {
+    "slug": "party-flower",
+    "w": 800,
+    "h": 800,
+    "cover": false,
+    "gallery": false
+  },
+  {
+    "slug": "party-groomsman",
+    "w": 800,
+    "h": 800,
+    "cover": false,
+    "gallery": false
+  },
+  {
+    "slug": "party-mc",
+    "w": 800,
+    "h": 800,
+    "cover": false,
+    "gallery": false
+  },
+  {
+    "slug": "party-mother",
+    "w": 800,
+    "h": 800,
+    "cover": false,
+    "gallery": false
+  },
+  {
+    "slug": "rite-dance",
+    "w": 1200,
+    "h": 800,
+    "cover": false,
+    "gallery": false
+  },
+  {
+    "slug": "rite-dinner",
+    "w": 1200,
+    "h": 800,
+    "cover": false,
+    "gallery": false
+  },
+  {
+    "slug": "rite-feast",
+    "w": 1200,
+    "h": 800,
+    "cover": false,
+    "gallery": false
+  },
+  {
+    "slug": "rite-gifts",
+    "w": 1200,
+    "h": 800,
+    "cover": false,
+    "gallery": false
+  },
+  {
+    "slug": "rite-khansla",
+    "w": 1200,
+    "h": 800,
+    "cover": false,
+    "gallery": false
+  },
+  {
+    "slug": "rite-lotus",
+    "w": 1200,
+    "h": 800,
+    "cover": false,
+    "gallery": false
+  },
+  {
+    "slug": "rite-lunch",
+    "w": 1200,
+    "h": 800,
+    "cover": false,
+    "gallery": false
+  },
+  {
+    "slug": "rite-music",
+    "w": 1200,
+    "h": 800,
+    "cover": false,
+    "gallery": false
+  },
+  {
+    "slug": "rite-pavilion",
+    "w": 1200,
+    "h": 800,
+    "cover": false,
+    "gallery": false
+  },
+  {
+    "slug": "rite-pealy",
+    "w": 1200,
+    "h": 800,
+    "cover": false,
+    "gallery": false
+  },
+  {
+    "slug": "rite-petals",
+    "w": 1200,
+    "h": 800,
+    "cover": false,
+    "gallery": false
+  },
+  {
+    "slug": "rite-rings",
+    "w": 1200,
+    "h": 800,
+    "cover": false,
+    "gallery": false
+  },
+  {
+    "slug": "rite-scissors",
+    "w": 1200,
+    "h": 800,
+    "cover": false,
+    "gallery": false
+  },
+  {
+    "slug": "rite-thread",
+    "w": 1200,
+    "h": 800,
+    "cover": false,
+    "gallery": false
+  },
+  {
+    "slug": "rite-welcome",
+    "w": 1200,
+    "h": 800,
+    "cover": false,
+    "gallery": false
+  }
+]

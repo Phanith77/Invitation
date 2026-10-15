@@ -1,0 +1,41 @@
+/* printable pages (/?print=…) — exact paper sizes, no margins; scripts/print.mjs saves the PDFs */
+html.is-print, html.is-print body { background: #e9e4d6; }
+.pr { display: grid; justify-content: center; gap: 12px; padding: 12px 0; }
+.pr-page {
+  position: relative; overflow: hidden; color: #2a2414; background-color: #fbf6ea;
+  background-image: url(/textures/paper-card.webp); background-size: 256px;
+  display: flex; flex-direction: column; align-items: center; text-align: center; box-sizing: border-box;
+  break-after: page; page-break-after: always;
+}
+.pr-page .foil { background-image: linear-gradient(100deg, var(--foil-0), var(--foil-4) 30%, var(--foil-1) 48%, var(--foil-0) 66%, var(--foil-4)); }
+.pr-c { position: absolute; width: 22%; }
+.pr-c.tl { top: 3%; left: 3%; } .pr-c.tr { top: 3%; right: 3%; } .pr-c.bl { bottom: 3%; left: 3%; } .pr-c.br { bottom: 3%; right: 3%; }
+.pr-qr svg { display: block; width: 100%; height: auto; }
+.pr-a4 { width: 210mm; height: 297mm; padding: 22mm 20mm; justify-content: center; gap: 2mm; }
+.pr-mark { width: 30mm; }
+.pr-title { font-size: 26pt; line-height: 1.9; margin: 0; }
+.pr-logo { width: 95mm; }
+.pr-names { font-size: 24pt; color: #8a6424; margin: -2mm 0 0; }
+.pr-date { font-size: 15pt; line-height: 1.9; margin: 2mm 0 0; }
+.pr-lunar { font-size: 11pt; }
+.pr-div { width: 70mm; }
+.pr-big-qr { width: 62mm; margin-top: 4mm; } .pr-big-qr p { font-size: 11pt; margin-top: 2mm; }
+.pr-qr-row { display: flex; gap: 22mm; margin-top: 6mm; } .pr-qr-row > div { width: 30mm; } .pr-qr-row p { font-size: 9pt; margin-top: 1.5mm; }
+.pr-a6 { width: 148mm; height: 105mm; flex-direction: row; justify-content: space-around; padding: 10mm; }
+.pr-a6-left { display: flex; flex-direction: column; align-items: center; }
+.pr-mark-s { width: 16mm; }
+.pr-table-label { font-size: 11pt; line-height: 1.8; margin: 0; }
+.pr-table-no { font-size: 46pt; line-height: 1.5; margin: -2mm 0 0; }
+.pr-names-s { font-size: 14pt; color: #8a6424; margin: 0; }
+.pr-a6-right { width: 38mm; } .pr-a6-right p { font-size: 9pt; margin-top: 2mm; line-height: 1.6; }
+.pr-a5 { width: 148mm; height: 210mm; padding: 13mm 13mm 11mm; gap: 1.2mm; justify-content: center; }
+.pr-a5 .pr-title { font-size: 17pt; }
+.pr-words { font-size: 9pt; line-height: 1.85; } .pr-words .km-moul { font-size: 10pt; color: #8a6424; }
+.pr-couple { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; width: 100%; margin: 2mm 0; }
+.pr-role { font-size: 8pt; color: #6b5a3a; } .pr-person { font-size: 13pt; line-height: 1.9; margin: 0; color: #6b4a12; } .pr-en { font-family: var(--en-serif); font-size: 10pt; }
+.pr-parents { font-size: 8pt; line-height: 1.75; margin-top: 1mm; }
+.pr-a5 .pr-date { font-size: 11pt; } .pr-a5 .pr-lunar { font-size: 8.5pt; }
+.pr-events { display: grid; gap: 1mm; margin-top: 1.5mm; } .pr-ev { font-size: 9pt; line-height: 1.9; margin: 0; } .pr-addr { font-size: 8pt; }
+.pr-a5-qr { display: flex; align-items: center; gap: 4mm; margin-top: 2mm; text-align: left; } .pr-a5-qr .pr-qr { width: 22mm; } .pr-a5-qr p { font-size: 8pt; max-width: 52mm; line-height: 1.7; }
+@page { margin: 0; }
+@media print { .pr { padding: 0; gap: 0; } html.is-print, html.is-print body { background: none; } }
