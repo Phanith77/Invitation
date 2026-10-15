@@ -4,5 +4,4 @@ qa
 .vercel
 .env*
 .data
-public/music/*.mp3
-music/
+/music/
